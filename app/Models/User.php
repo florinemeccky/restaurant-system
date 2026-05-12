@@ -46,4 +46,22 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+// Add this after the existing code, before the last closing brace }
+
+// ----------------
+// RELATIONSHIPS
+// ----------------
+
+// A user can have many reservations
+public function reservations()
+{
+    return $this->hasMany(Reservation::class);
 }
+
+// A user can have many orders
+public function orders()
+{
+    return $this->hasMany(Order::class);
+}
+    }
