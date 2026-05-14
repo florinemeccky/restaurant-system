@@ -10,16 +10,23 @@
 
     {{-- Top Navigation Bar --}}
     <nav class="bg-gray-900 text-white px-6 py-4 flex justify-between items-center">
-        <h1 class="text-xl font-bold">🍽️ Restaurant Admin</h1>
-        <div class="flex gap-6">
-            <a href="{{ route('admin.tables.index') }}" class="hover:text-yellow-400">Tables</a>
-            <a href="#" class="hover:text-yellow-400">Menu</a>
-            <form method="POST" action="{{ route('logout') }}" class="inline">
-                @csrf
-                <button type="submit" class="hover:text-red-400">Logout</button>
-            </form>
-        </div>
-    </nav>
+    <h1 class="text-xl font-bold">🍽️ Restaurant Admin</h1>
+    <div class="flex gap-6">
+        <a href="{{ route('admin.dashboard') }}"
+           class="hover:text-yellow-400">Dashboard</a>
+        <a href="{{ route('admin.tables.index') }}"
+           class="hover:text-yellow-400">Tables</a>
+        <a href="{{ route('admin.categories.index') }}"
+           class="hover:text-yellow-400">Categories</a>
+        <a href="{{ route('admin.menu-items.index') }}"
+            class="hover:text-yellow-400">Menu Items</a>
+           
+        <form method="POST" action="{{ route('logout') }}" class="inline">
+            @csrf
+            <button type="submit" class="hover:text-red-400">Logout</button>
+        </form>
+    </div>
+</nav>
 
     {{-- Page Content --}}
     <main class="max-w-6xl mx-auto px-6 py-8">

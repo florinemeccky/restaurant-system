@@ -6,16 +6,16 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminMiddleware
+class StaffMiddleware
 {
     public function handle(Request $request, Closure $next): Response
     {
-        // $request->user() is the cleanest approach inside middleware
-        // It avoids all Intelephense warnings from auth() helper
         $user = $request->user();
 
-        if (!$user || $user->role !== 'admin') {
-            abort(403, 'Access denied. Admins only.');
+        // Allow both staff AND admin to access staff routes
+        // Admin should be able to see everything staff can see
+        if (!$user || !in_array($user->role, ['staff', 'admin'])) {
+            abort(403, 'Access denied. Staff only.');
         }
 
         return $next($request);

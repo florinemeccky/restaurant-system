@@ -12,9 +12,11 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
 
-        // Register our custom middleware aliases here
+        // Register custom middleware aliases
+        // These are referenced as strings in routes like middleware(['auth', 'admin'])
         $middleware->alias([
             'admin' => \App\Http\Middleware\AdminMiddleware::class,
+            'staff' => \App\Http\Middleware\StaffMiddleware::class,
         ]);
 
     })
